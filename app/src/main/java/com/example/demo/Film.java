@@ -53,7 +53,7 @@ public class Film {
             for (int i = 0; i < this.actors.length; i++) {
                 rep += this.actors[i];
                 if (i < this.actors.length - 1) {
-                    rep += ", ";
+                    rep += "; ";
                 }
             }
         }

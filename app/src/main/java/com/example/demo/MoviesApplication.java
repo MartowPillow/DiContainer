@@ -30,5 +30,12 @@ public class MoviesApplication {
 		for (Film film:ml.getActorFilm("Actor2")) {
 			System.out.println(film.print());
 		}
+
+		System.out.println("\nWMF:");
+		WebMovieFinder wmf = new WebMovieFinder();
+		wmf.addFromSearch("shrek");
+		for (Film film:wmf.getListe()) {
+			System.out.println(film.print());
+		}
 	}
 }
