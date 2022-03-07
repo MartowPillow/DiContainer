@@ -1,6 +1,10 @@
-package com.example.demo;
+package com.example.demo.MovieFinders;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import com.example.demo.AuditService;
+import com.example.demo.Film;
+import com.example.demo.Injectable;
+import com.example.demo.MovieFinders.IMovieFinder;
+import com.example.demo.Scannable;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -10,8 +14,11 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class WebMovieFinder implements IMovieFinder{
+@Scannable
+public class WebMovieFinder implements IMovieFinder {
     private ArrayList<Film> liste;
+
+    @Injectable
     private AuditService auditService;
 
     private String apiUrl = "https://www.omdbapi.com";
@@ -19,7 +26,13 @@ public class WebMovieFinder implements IMovieFinder{
 
     public WebMovieFinder(){
         this.liste = new ArrayList<Film>();
-        this.auditService = new AuditService();
+    }
+
+    public AuditService getAuditService(){
+        return  this.auditService;
+    }
+    public void setAuditService(AuditService auditService){
+        this.auditService = auditService;
     }
 
     public ArrayList<Film> getListe(){
@@ -30,7 +43,7 @@ public class WebMovieFinder implements IMovieFinder{
         try {
             String name = obj.getString("Title");
             String author = obj.getString("Director");
-            String[] actors = obj.getString("Actors").split(",");
+            String[] actors = obj.getString("Actors").split(", ");
             String date = obj.getString("Released");
 
             Film film = new Film(name, author, actors, date);

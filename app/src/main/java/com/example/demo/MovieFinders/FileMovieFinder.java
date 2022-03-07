@@ -1,15 +1,29 @@
-package com.example.demo;
+package com.example.demo.MovieFinders;
+
+import com.example.demo.AuditService;
+import com.example.demo.Film;
+import com.example.demo.Injectable;
+import com.example.demo.Scannable;
 
 import java.io.*;
 import java.util.ArrayList;
 
+@Scannable
 public class FileMovieFinder implements IMovieFinder {
     private ArrayList<Film> liste;
+
+    @Injectable
     private AuditService auditService;
 
     public FileMovieFinder(){
         this.liste = new ArrayList<Film>();
-        this.auditService = new AuditService();
+    }
+
+    public AuditService getAuditService(){
+        return  this.auditService;
+    }
+    public void setAuditService(AuditService auditService){
+        this.auditService = auditService;
     }
 
     public ArrayList<Film> getListe(){

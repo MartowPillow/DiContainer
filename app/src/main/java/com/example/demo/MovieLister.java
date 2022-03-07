@@ -1,28 +1,28 @@
 package com.example.demo;
 
+import com.example.demo.MovieFinders.IMovieFinder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@Scannable
 public class MovieLister {
 
-    private ArrayList<Film> liste;
+    @Injectable
+    private IMovieFinder movieFinder;
 
-    public MovieLister(){
-        this.liste = new ArrayList<Film>();
+    public void setMovieFinder(IMovieFinder movieFinder) {
+        this.movieFinder = movieFinder;
     }
 
     public ArrayList<Film> getListe(){
-        return this.liste;
-    }
-
-    public void setListe(ArrayList<Film> liste){
-        this.liste = liste;
+        return this.movieFinder.getListe();
     }
 
     public ArrayList<Film> getActorFilm(String actor){
         ArrayList<Film> rep = new ArrayList<Film>();
 
-        for(Film film: liste){
+        for(Film film: this.getListe()){
             if(Arrays.asList(film.getActors()).contains(actor)) {
                 rep.add(film);
             }

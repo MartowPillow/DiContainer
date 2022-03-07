@@ -1,6 +1,7 @@
 package com.example.demo;
 
 //Not sure what this is supposed to do?
+@Scannable
 public class AuditService {
 
     private int count;
