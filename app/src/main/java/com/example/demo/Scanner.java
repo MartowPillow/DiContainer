@@ -10,36 +10,31 @@ import java.util.Set;
 
 public class Scanner {
 
-    public static Set<Class<?>> getAllClassesInPackage(String packageName) throws Exception {
+    public static Set<Class<?>> getClassesInPackage(String packageName) throws Exception {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        String path = packageName.replace('.', '/');
-        Enumeration<URL> resources = classLoader.getResources(path);
-        List<File> dirs = new ArrayList<>();
+        Enumeration<URL> resources = classLoader.getResources(packageName.replace('.', '/'));
+        List<File> folders = new ArrayList<File>();
         while (resources.hasMoreElements()) {
             URL resource = resources.nextElement();
-            dirs.add(new File(resource.getFile()));
+            folders.add(new File(resource.getFile()));
         }
         Set<Class<?>> classes = new HashSet<>();
-        for (File directory : dirs) {
-            classes.addAll(findClasses(directory, packageName));
+        for (File folder : folders) {
+            classes.addAll(getClassesInFolder(folder, packageName));
         }
         return classes;
     }
 
-    private static List<Class<?>> findClasses(File directory, String packageName) throws Exception {
+    private static List<Class<?>> getClassesInFolder(File folder, String packageName) throws Exception {
         List<Class<?>> classes = new ArrayList<>();
-        if (!directory.exists()) {
-            return classes;
-        }
-        File[] files = directory.listFiles();
+        File[] files = folder.listFiles();
         for (File file : files) {
-            if (file.isDirectory()) {
-                classes.addAll(findClasses(file, packageName + "." + file.getName()));
+            if (file.isDirectory()) { //recursion in subfolder
+                classes.addAll(getClassesInFolder(file, packageName + "." + file.getName()));
             } else if (file.getName().endsWith(".class")) {
-                classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));
+                classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6))); //6 = len(".class")
             }
         }
         return classes;
     }
-
 }

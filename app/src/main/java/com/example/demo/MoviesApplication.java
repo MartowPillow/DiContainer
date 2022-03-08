@@ -43,7 +43,7 @@ public class MoviesApplication {
 		}
 		*/
 
-		////Methode 2 : Container remplit a la main
+		////Methode 2 : Container rempli a la main
 		/*
 		//MovieLister requires IMovieFinder
 		//IMovieFinder requires AuditService
@@ -80,18 +80,18 @@ public class MoviesApplication {
 		}
 		*/
 
-		////Methode 3 : Container remplit auto par scan du package
+		////Methode 3 : Container rempli auto par scan du package
 
 		String rootPackageName = MoviesApplication.class.getPackage().getName();
 		Container conteneur =  Container.ContainerFromScan(rootPackageName);
+		conteneur.bind("movieFinder", MovieLister.class, WebMovieFinder.class);
 
 		FileMovieFinder fmf = conteneur.newInstance(FileMovieFinder.class);
 		WebMovieFinder wmf = conteneur.newInstance(WebMovieFinder.class);
 		MovieLister ml = conteneur.newInstance(MovieLister.class);
-		AuditService as = conteneur.newInstance(AuditService.class);
 
 		System.out.println("\nFMF:");
-		fmf.findFromFile("/home/local.isima.fr/thyriarte/shared/cours/javapro/DiContainer/app/src/main/java/com/example/demo/Films.txt");
+		fmf.findFromFile("src/main/java/com/example/demo/Films.txt");
 		for (Film film:fmf.getListe()) {
 			System.out.println(film.print());
 		}
@@ -102,12 +102,10 @@ public class MoviesApplication {
 			System.out.println(film.print());
 		}
 
-		//TODO: ml trouve un film de wmf sans ml.setMovieFinder(wmf) , des fois mais pas toujours?
 		System.out.println("\nML:");
 		for (Film film:ml.getActorFilm("Christopher Knights")) {
 			System.out.println(film.print());
 		}
-		
 
 	}
 }

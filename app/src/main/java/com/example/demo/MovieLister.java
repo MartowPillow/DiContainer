@@ -15,6 +15,9 @@ public class MovieLister {
         this.movieFinder = movieFinder;
     }
 
+    public IMovieFinder getMovieFinder(){
+        return this.movieFinder;
+    }
     public ArrayList<Film> getListe(){
         return this.movieFinder.getListe();
     }

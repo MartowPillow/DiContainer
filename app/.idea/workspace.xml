@@ -23,20 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd5210d4-7c34-4b71-9168-eaa0ae7cc746" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/IMovieFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AuditService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AuditService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FileMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/FileMovieFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/IMovieFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Container.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieLister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MoviesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MoviesApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/WebMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/WebMovieFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/FileMovieFinder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/IMovieFinder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/MovieLister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/MovieLister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/MoviesApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/MoviesApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/WebMovieFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/MoviesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/MoviesApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +72,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.MoviesApplicationTests">
     <configuration name="MoviesApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.MoviesApplication" />
       <module name="demo" />
@@ -93,9 +86,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MoviesApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.MoviesApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoviesApplicationTests.ScanAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.MoviesApplicationTests" />
+      <option name="METHOD_NAME" value="ScanAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MoviesApplicationTests" />
         <item itemvalue="Application.MoviesApplication" />
+        <item itemvalue="JUnit.MoviesApplicationTests.ScanAll" />
       </list>
     </recent_temporary>
   </component>

@@ -11,23 +11,23 @@ public class Container {
     private Set<Object> Instances = new HashSet<>();
 
     public Container(Collection<Class<?>> Classes) throws Exception {
-        // create an instance of each class
+        //create an instance of each class
         for(Class<?> Class : Classes){
             Constructor<?> constructor = Class.getConstructor();
             constructor.setAccessible(true);
             Object Instance = constructor.newInstance();
             this.Instances.add(Instance);
         }
-        // wire them together
+        //link instances together
         for(Object Instance : this.Instances){
             for(Field field : Instance.getClass().getDeclaredFields()){
                 if(field.isAnnotationPresent(Injectable.class)) {
                     Class<?> fieldType = field.getType();
                     field.setAccessible(true);
-                    // find a suitable matching instance
-                    for (Object matchPartner : this.Instances) {
-                        if (fieldType.isInstance(matchPartner)) {
-                            field.set(Instance, matchPartner);
+                    // find matching instances
+                    for (Object otherInstance : this.Instances) {
+                        if (fieldType.isInstance(otherInstance)) {
+                            field.set(Instance, otherInstance);
                         }
                     }
                 }
@@ -36,33 +36,58 @@ public class Container {
     }
 
     public static Container ContainerFromScan(String rootPackageName) throws Exception {
-        Set<Class<?>> allClassesInPackage = Scanner.getAllClassesInPackage(rootPackageName);
-        Set<Class<?>> Classes = new HashSet<>();
-        for(Class<?> Class : allClassesInPackage){
+        Set<Class<?>> packageAllClasses = Scanner.getClassesInPackage(rootPackageName);
+        Set<Class<?>> scannableClasses = new HashSet<>();
+        for(Class<?> Class : packageAllClasses){
             if(Class.isAnnotationPresent(Scannable.class)){
-                Classes.add(Class);
+                scannableClasses.add(Class);
             }
         }
-        return new Container(Classes);
+        return new Container(scannableClasses);
+    }
+    //empty container, to use with 'register'
+    public Container() {
     }
 
     //add a class after container creation
     public void register(Class<?> Class) throws Exception {
-        // create an instance of that class
+        //create an instance of that class
         Constructor<?> constructor = Class.getConstructor();
         constructor.setAccessible(true);
         this.Instances.add(constructor.newInstance());
 
-        // re-wire instances together
+        //re-link instances together
         for(Object Instance : this.Instances){
             for(Field field : Instance.getClass().getDeclaredFields()){
                 if(field.isAnnotationPresent(Injectable.class)) {
                     Class<?> fieldType = field.getType();
                     field.setAccessible(true);
-                    // find a suitable matching instance
-                    for (Object matchPartner : this.Instances) {
-                        if (fieldType.isInstance(matchPartner)) {
-                            field.set(Instance, matchPartner);
+                    //find a matching instance
+                    for (Object otherInstance : this.Instances) {
+                        if (fieldType.isInstance(otherInstance)) {
+                            field.set(Instance, otherInstance);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //in class 'in', binds field 'fieldName' to class 'to'.
+    public void bind(String fieldName, Class<?> in, Class<?> to) throws IllegalAccessException {
+        //find 'in'
+        for(Object Instance : this.Instances){
+            if(in.isInstance(Instance)) {
+                //find 'fieldName'
+                for (Field field : Instance.getClass().getDeclaredFields()) {
+                    if (field.getName().equals(fieldName) && field.isAnnotationPresent(Injectable.class)) {
+                        field.setAccessible(true);
+                        //find 'to'
+                        for (Object otherInstance : this.Instances) {
+                            if (to.isInstance(otherInstance)) {
+                                //bind
+                                field.set(Instance, otherInstance);
+                            }
                         }
                     }
                 }
@@ -77,5 +102,9 @@ public class Container {
             }
         }
         return null;
+    }
+
+    public Set<Object> getInstances(){
+        return this.Instances;
     }
 }
