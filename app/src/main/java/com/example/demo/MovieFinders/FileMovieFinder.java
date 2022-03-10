@@ -31,7 +31,8 @@ public class FileMovieFinder implements IMovieFinder {
     }
 
     //file line = Name;Author;Actor1;Actor2;ActorN;Date
-    public void findFromFile(String filename){
+    @Override
+    public void Load(String filename){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String currentLine = reader.readLine();

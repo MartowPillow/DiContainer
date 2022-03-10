@@ -67,7 +67,8 @@ public class WebMovieFinder implements IMovieFinder {
         }
     }
 
-    public void addFromSearch(String search){
+    @Override
+    public void Load(String search){
         try {
             String url = this.apiUrl + "/?s=" + search + "&apikey=" + this.apiKey;
             JSONObject obj = readJsonFromUrl(url);

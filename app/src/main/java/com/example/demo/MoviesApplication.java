@@ -63,13 +63,13 @@ public class MoviesApplication {
 		AuditService as = conteneur.newInstance(AuditService.class);
 
 		System.out.println("\nFMF:");
-		fmf.findFromFile("/home/local.isima.fr/thyriarte/shared/cours/javapro/DiContainer/app/src/main/java/com/example/demo/Films.txt");
+		fmf.Load("/home/local.isima.fr/thyriarte/shared/cours/javapro/DiContainer/app/src/main/java/com/example/demo/Films.txt");
 		for (Film film:fmf.getListe()) {
 			System.out.println(film.print());
 		}
 
 		System.out.println("\nWMF:");
-		wmf.addFromSearch("shrek");
+		wmf.Load("shrek");
 		for (Film film:wmf.getListe()) {
 			System.out.println(film.print());
 		}
@@ -91,13 +91,13 @@ public class MoviesApplication {
 		MovieLister ml = conteneur.newInstance(MovieLister.class);
 
 		System.out.println("\nFMF:");
-		fmf.findFromFile("src/main/java/com/example/demo/Films.txt");
+		fmf.Load("src/main/java/com/example/demo/Films.txt");
 		for (Film film:fmf.getListe()) {
 			System.out.println(film.print());
 		}
 
 		System.out.println("\nWMF:");
-		wmf.addFromSearch("shrek");
+		wmf.Load("shrek");
 		for (Film film:wmf.getListe()) {
 			System.out.println(film.print());
 		}

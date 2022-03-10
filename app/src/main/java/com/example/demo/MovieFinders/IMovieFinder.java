@@ -11,4 +11,6 @@ public interface IMovieFinder {
     public AuditService getAuditService();
     public void setAuditService(AuditService auditService);
 
+    public void Load(String input);
+
 }

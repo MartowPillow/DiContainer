@@ -24,11 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="dd5210d4-7c34-4b71-9168-eaa0ae7cc746" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AuditService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AuditService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieLister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/FileMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/FileMovieFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/IMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/IMovieFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/WebMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MovieFinders/WebMovieFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MoviesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MoviesApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Scanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/MoviesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/MoviesApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
